@@ -7,10 +7,10 @@ name = "pypi"
 discord = "*"
 python-dotenv = "*"
 coloraide = "*"
-plotext = "*"
-matplotlib = "*"
 
 [dev-packages]
+plotext = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.9"
