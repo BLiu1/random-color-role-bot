@@ -1,9 +1,9 @@
-from typing import Final
+from typing import Final, Union
 import os
 from dotenv import load_dotenv
 from discord import Intents, Client, Colour as DiscordColor
 from RandomColorRoleClient import RandomColorRoleClient
-from random_color_strategies import RandomColor, light_mode_friendly_strategy, dark_mode_dominant_strategy
+from random_color_strategies import RandomColor, dark_mode_dominant_strategy
 from color_utils import to_color
 # import plotext as plt
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ import numpy as np
 
 def main() -> None:
     load_dotenv()
-    TOKEN: Final[str | None] = os.getenv('DISCORD_TOKEN')
+    TOKEN: Final[Union[str, None]] = os.getenv('DISCORD_TOKEN')
 
     if not TOKEN:
         print('missing token')
@@ -25,7 +25,7 @@ def main() -> None:
 def test() -> None:
     dark_theme_color = to_color(DiscordColor.dark_theme())
     print(f'Dark theme color: {dark_theme_color.to_string(hex=True)}')
-    light_mode_random_color = RandomColor(light_mode_friendly_strategy)
+    # light_mode_random_color = RandomColor(light_mode_friendly_strategy)
     dark_mode_random_color = RandomColor(dark_mode_dominant_strategy)
     # test_colors1 = [strict_random_color.generate() for _ in range(5000)]
     # ratios1 = [color.contrast(dark_theme_color) for color in test_colors1]
@@ -46,13 +46,13 @@ def test() -> None:
     colors3 = [dark_mode_random_color.generate() for _ in range(200)]
     colors3.sort(key=lambda c: c.convert('oklch')['c'])
     # colors3.sort(key=lambda c: c.contrast(dark_theme_color))
-    color_strings = [
-        (colored(
-            int(color['r']*255),
-            int(color['g']*255),
-            int(color['b']*255),
-            '████'))
-        for color in colors3]
+    # color_strings = [
+    #     (colored(
+    #         int(color['r']*255),
+    #         int(color['g']*255),
+    #         int(color['b']*255),
+    #         '████'))
+    #     for color in colors3]
     # print(*color_strings, sep='')
 
     colors4 = [dark_mode_random_color.generate() for _ in range(1000)]

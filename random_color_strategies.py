@@ -1,3 +1,4 @@
+from typing import Union
 from coloraide import Color
 from discord import Colour as DiscordColor
 from collections.abc import Callable, Sequence
@@ -35,7 +36,7 @@ def dark_mode_dominant_strategy() -> Color:
 def _contrast_based_strategy(
     color_contrast_pairs: Sequence[tuple[Color, float]],
     space: str = 'oklch',
-    limits: Sequence[Sequence[float] | None] | None = None
+    limits: Union[Sequence[Union[Sequence[float], None]], None] = None
 ) -> Color:
     while True:
         color = Color.random(space, limits=limits)
