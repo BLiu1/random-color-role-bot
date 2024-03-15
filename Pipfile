@@ -4,14 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-discord = "*"
-python-dotenv = "*"
-coloraide = "*"
+sanic = "*"
 
 [dev-packages]
-plotext = "*"
-matplotlib = "*"
 
 [requires]
-python_version = "3.9"
-python_full_version = "3.9.13"
+python_version = "3.11"
